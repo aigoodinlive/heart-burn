@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HeART Burn | (ה)קול קורה באהבה</title>
+  <title>HeART Burn | Valentine's Horror Show 2026</title>
   <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -79,7 +79,21 @@
     .title-main .he {
       color: var(--red-neon);
       text-shadow: 0 0 30px var(--red-neon), 0 0 60px var(--pink-hot);
-      animation: heart-beat 1.5s ease-in-out infinite;
+      animation: heart-beat 1.5s ease-in-out infinite, neon-blink 2s ease-in-out infinite;
+    }
+
+    @keyframes neon-blink {
+      0%, 18%, 22%, 25%, 53%, 57%, 100% {
+        text-shadow:
+          0 0 30px var(--red-neon),
+          0 0 60px var(--pink-hot),
+          0 0 100px var(--red-neon);
+        opacity: 1;
+      }
+      20%, 24%, 55% {
+        text-shadow: 0 0 5px var(--red-neon);
+        opacity: 0.6;
+      }
     }
 
     .title-main .art {
@@ -115,6 +129,47 @@
       color: var(--pink-soft);
       margin-top: 0.5rem;
       letter-spacing: 0.1em;
+    }
+
+    .subtitle-small {
+      font-size: clamp(0.9rem, 2vw, 1.1rem);
+      color: var(--text-muted);
+      margin-top: 0.5rem;
+    }
+
+    .horror-icon {
+      display: inline-block;
+      animation: horror-shake 0.5s ease-in-out infinite;
+    }
+
+    @keyframes horror-shake {
+      0%, 100% { transform: rotate(0deg); }
+      25% { transform: rotate(-5deg); }
+      75% { transform: rotate(5deg); }
+    }
+
+    /* Blood drip effect on title */
+    .title-main .burn::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      width: 4px;
+      height: 0;
+      background: var(--red-neon);
+      border-radius: 0 0 50% 50%;
+      animation: drip 3s ease-in-out infinite;
+      filter: drop-shadow(0 0 5px var(--red-neon));
+    }
+
+    @keyframes drip {
+      0%, 100% { height: 0; opacity: 0; }
+      50% { height: 20px; opacity: 1; }
+      80% { height: 30px; opacity: 0; }
+    }
+
+    .title-main .burn {
+      position: relative;
     }
 
     .tagline {
@@ -270,10 +325,24 @@
 
     .features-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 1.5rem;
-      max-width: 1100px;
-      margin: 0 auto;
+      max-width: 900px;
+      margin: 2rem auto 0;
+      padding: 0 1rem;
+    }
+
+    @media (max-width: 900px) {
+      .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .features-grid {
+        grid-template-columns: 1fr;
+        max-width: 350px;
+      }
     }
 
     .feature-card {
@@ -318,6 +387,12 @@
       padding: 1rem;
       background: rgba(0, 0, 0, 0.3);
       border-radius: 10px;
+    }
+
+    /* Tickets */
+    .tickets {
+      padding: 80px 5%;
+      background: linear-gradient(180deg, transparent, rgba(139, 0, 0, 0.15), transparent);
     }
 
     /* Volunteer Call */
@@ -451,6 +526,15 @@
       .cta-btn { width: 100%; max-width: 300px; justify-content: center; }
     }
   </style>
+
+  <!-- Microsoft Clarity -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "v4t34i1n7m");
+  </script>
 </head>
 <body>
   <canvas class="bg-canvas" id="bg-canvas"></canvas>
@@ -471,29 +555,22 @@
             <span class="he">He</span><span class="art">ART</span>
             <span class="burn">Burn</span>
           </h1>
-          <p class="subtitle-hebrew">(ה)קול קורה באהבה</p>
+          <p class="subtitle-hebrew">Valentine's Horror Show <span class="horror-icon">☠️</span></p>
+        <p class="subtitle-small">יום שישי ה-13 ויום האהבה נפגשים באירוע שכולו השתתפות</p>
         </div>
 
         <div class="duration-badge">33 שעות של יצירה ואהבה</div>
 
-        <p class="tagline">הכל קורה <em>באהבה</em></p>
+        <p class="tagline">בלילה הזה <em>נשרפים</em></p>
 
         <div class="event-meta">
           <div class="meta-item">
             <span>📅</span>
-            <span>14-15.02.2025</span>
-          </div>
-          <div class="meta-item">
-            <span>⏰</span>
-            <span>שישי 14:00 - שבת 23:00</span>
+            <span>שישי 13.02 16:00 - שבת 14.02 23:00</span>
           </div>
           <div class="meta-item">
             <span>📍</span>
             <span>15 דק׳ מת״א</span>
-          </div>
-          <div class="meta-item">
-            <span>🔞</span>
-            <span>21+</span>
           </div>
         </div>
 
@@ -515,56 +592,60 @@
     <!-- About -->
     <section class="about" id="about">
       <div class="section-container">
-        <h2 class="section-title">בליינד דייט <span class="highlight">יצירתי</span></h2>
+        <h2 class="section-title">מה זה <span class="highlight">HeART Burn?</span></h2>
 
         <p class="about-text">
-          בואו לאירוע של <strong>33 שעות</strong> של אמנות, יצירה משותפת, מסיבות וחוויות לרגל יום האהבה.
+          <strong>אירוע מבוסס השתתפות</strong> — כלומר, כולנו מפיקים!<br>
+          התוכן באירוע וכל תפקידי התפעול נעשים בהתנדבות על ידי המשתתפים.
         </p>
 
         <p class="about-text">
-          תרשו לעצמכם להיות מופתעים! כולנו מביאים את התוכן שלנו ולוקחים חלק בקסם,
-          אבל התוכן הזה <strong>לא יפורסם מראש</strong>. הכל יהיה בהפתעה — סוג של "בליינד דייט" יצירתי.
+          אתם לא מגיעים לצרוך תוכן — <strong>אתם מגיעים כדי לייצר אותו!</strong><br>
+          המארגנים רק דואגים למגרש משחקים מושלם להתפרע בתכנים שמוח קודח כמו שלכם יודע להמציא.
         </p>
 
         <p class="about-text">
-          אנחנו לא עשינו הרבה... בעצם רק ארגנו לכם <strong>מגרש משחקים מושלם</strong>
-          להתפרע בתכנים שרק המח הקודח שלכם יודע להמציא.
+          <strong>33 שעות</strong> של אמנות, יצירה משותפת, מסיבות וחוויות מפתיעות בהגזמה.<br>
+          כ-500 משתתפים, מערכת סאונד חושילינג, ויומולדת 50 שנה למופע הקולנוע של רוקי!
         </p>
       </div>
     </section>
 
-    <!-- Features -->
+    <!-- Important Info -->
     <section class="features">
+      <div class="section-container">
+        <h2 class="section-title">חשוב <span class="highlight">לדעת</span></h2>
+      </div>
       <div class="features-grid">
         <div class="feature-card">
-          <div class="feature-icon">🎵</div>
-          <h3>מוזיקה</h3>
-          <p>לייב או מתוקלט — הכל אפשרי</p>
+          <div class="feature-icon">🎁</div>
+          <h3>ללא מטרות רווח</h3>
+          <p>כל ההכנסות חוזרות לתמיכה בתכנים ובאירועים הבאים</p>
         </div>
         <div class="feature-card">
-          <div class="feature-icon">🎭</div>
-          <h3>פרפורמנס</h3>
-          <p>הופעות חיות והפתעות</p>
+          <div class="feature-icon">🥤</div>
+          <h3>ללא חד פעמי</h3>
+          <p>הביאו כוסות אישיות — אנחנו שומרים על הסביבה</p>
         </div>
         <div class="feature-card">
-          <div class="feature-icon">🎨</div>
-          <h3>אמנות</h3>
-          <p>יצירה בלייב ומיצבים</p>
+          <div class="feature-icon">👨‍👩‍👧</div>
+          <h3>ילדים בשבת</h3>
+          <p>מוזמנים להביא ילדים ביום שבת בלבד, 10:00-18:00</p>
         </div>
         <div class="feature-card">
-          <div class="feature-icon">🛠️</div>
-          <h3>סדנאות</h3>
-          <p>יצירה משותפת וחוויתית</p>
+          <div class="feature-icon">🎟️</div>
+          <h3>אירוע פרטי</h3>
+          <p>הזמנת כרטיסים תאושר על ידי המארגנים</p>
         </div>
         <div class="feature-card">
-          <div class="feature-icon">🍽️</div>
-          <h3>אוכל</h3>
-          <p>טעמים ושפע</p>
+          <div class="feature-icon">🤝</div>
+          <h3>מרחב בטוח</h3>
+          <p>אפס סובלנות להטרדות ואלימות — כבדו גבולות</p>
         </div>
         <div class="feature-card">
-          <div class="feature-icon">💃</div>
-          <h3>תנועה</h3>
-          <p>משחקים וריקודים</p>
+          <div class="feature-icon">♿</div>
+          <h3>נגישות</h3>
+          <p>חלק מהחללים אינם מונגשים — פנו אלינו בשאלות</p>
         </div>
       </div>
     </section>
@@ -573,50 +654,74 @@
     <section class="location">
       <h2 class="section-title">הלוקיישן</h2>
       <div class="location-box">
-        <p class="location-secret">✨ חלל סודי, מפתיע ומיוחד ✨</p>
+        <p class="location-secret">✨ חלל סודי, ענקי ומיוחד ✨</p>
         <p class="location-hint">
-          המקום ענק וכולל כמה מרחבים מגוונים — חלקם בחצר גדולה וחלקם בתוך חלל עבודה מיוחד.
-          <br>מושלם לתעופות של יצירה!
+          סטודיו אמנות ענק עם אין ספור מרחבי יצירה — חלקם בחצר גדולה, חלקם בתוך חללי עבודה.
+          <br>קנבס לבן וחלק מושלם לתעופות של יצירה!
         </p>
         <p class="location-address">
-          <strong>ארטן בטונדה</strong><br>
-          רח׳ הסדן 13, הוד השרון<br>
-          🚗 15 דקות מתל אביב
+          <strong>הוד השרון</strong><br>
+          🚗 15 דקות מתל אביב<br>
+          <span style="font-size: 0.85rem; opacity: 0.7;">(הכתובת המדויקת תשלח לרוכשי כרטיסים)</span>
         </p>
       </div>
     </section>
 
-    <!-- Volunteer Call -->
-    <section class="volunteer" id="volunteer">
+    <!-- Tickets Section -->
+    <section class="tickets" id="tickets">
+      <div class="section-container">
+        <h2 class="section-title">רוצים <span class="highlight">להגיע?</span></h2>
+
+        <p class="about-text">
+          האירוע הינו אירוע חברים פרטי — הזמנת הכרטיסים תאושר על ידי המארגנים.<br>
+          <strong>כולם קונים כרטיס</strong> — כן כן, גם הצוות המארגן!
+        </p>
+
+        <div class="cta-container" style="margin-top: 2rem;">
+          <a href="https://chillz.com/Mk1MwzJr4K?ref=Ybfl9" target="_blank" class="cta-btn primary" style="font-size: 1.3rem; padding: 1.2rem 3rem;">
+            🎟️ לרכישת כרטיסים
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Participation Call -->
+    <section class="volunteer" id="participate">
       <div class="volunteer-box">
-        <h2 class="volunteer-title">🔥 הקול קורה לכם! 🔥</h2>
+        <h2 class="volunteer-title">🔥 רוצים לבעור? 🔥</h2>
 
         <p class="volunteer-text">
-          האירוע הזה נוצר על ידי הקהילה, בשביל הקהילה.<br>
-          <strong>אנחנו מחפשים אתכם</strong> — את היוצרים, החולמים, העושים.
+          אם את אמנית, קוסם, שמאנית, דיג׳יי, או פשוט מישהו שמסתובבת לו הקופסה<br>
+          כששמים לו מיקרופון מול הפנים — <strong>זה הרגע שלך לצאת מהמערה!</strong>
         </p>
 
-        <p class="volunteer-text">
-          רוצים להיות חלק מהקסם? להביא את הכישרון שלכם לבמה?
+        <p class="volunteer-text" style="font-size: 1rem; margin-top: 1.5rem;">
+          <strong style="color: var(--pink-soft);">תוכן יצירתי:</strong>
         </p>
-
         <div class="volunteer-roles">
           <span class="role-tag">🎧 DJ / מוזיקאים</span>
           <span class="role-tag">🎨 אמנים</span>
           <span class="role-tag">🎭 פרפורמרים</span>
-          <span class="role-tag">🛠️ מנחי סדנאות</span>
-          <span class="role-tag">⚙️ תפעול</span>
+          <span class="role-tag">🛠️ סדנאות</span>
+                  </div>
+
+        <p class="volunteer-text" style="font-size: 1rem; margin-top: 1.5rem;">
+          <strong style="color: var(--pink-soft);">התנדבות בהפקה:</strong>
+        </p>
+        <div class="volunteer-roles">
+          <span class="role-tag">🚪 גייט</span>
+          <span class="role-tag">🍺 בר</span>
+          <span class="role-tag">🏗️ הקמות ופירוקים</span>
           <span class="role-tag">📸 תיעוד</span>
-          <span class="role-tag">🍳 אוכל</span>
-          <span class="role-tag">✨ קסם כללי</span>
+          <span class="role-tag">⚙️ תפעול כללי</span>
         </div>
 
-        <p class="volunteer-text">
-          בואו ליצור יחד משהו שלא נשכח!
+        <p class="volunteer-text" style="margin-top: 1.5rem;">
+          מלאו את הטופס והביאו את המתנה שלכם לאירוע!
         </p>
 
         <a href="https://forms.gle/mcUngaXt9NHSHU1S8" target="_blank" class="volunteer-cta">
-          אני רוצה להתנדב! →
+          טופס השתתפות →
         </a>
       </div>
     </section>
@@ -630,7 +735,7 @@
       <a href="https://forms.gle/mcUngaXt9NHSHU1S8" target="_blank">התנדבות</a>
       <a href="https://chat.whatsapp.com/BdNXzTNR2Pk3QPxAsInBYW?mode=wwt" target="_blank">וואטסאפ</a>
     </div>
-    <p style="font-size: 0.8rem; color: var(--text-muted);">HeART Burn 2025 | יום האהבה</p>
+    <p style="font-size: 0.8rem; color: var(--text-muted);">HeART Burn 2026 | Valentine's Horror Show</p>
   </footer>
 
   <script>
