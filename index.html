@@ -831,7 +831,7 @@
 
     function animate() {
       time++;
-      ctx.fillStyle = 'rgba(10, 5, 8, 0.1)';
+      ctx.fillStyle = 'rgba(10, 5, 8, 1)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
       drawCentralHeart();
       particles.forEach(p => { p.update(); p.draw(); });
