@@ -210,6 +210,7 @@
       border-radius: 30px;
       font-weight: 700;
       font-size: 1.1rem;
+      margin-top: 0.5rem;
       margin-bottom: 1.5rem;
       animation: pulse-glow 2s ease-in-out infinite;
     }
@@ -812,7 +813,7 @@
     function drawCentralHeart() {
       const centerX = canvas.width / 2;
       const centerY = canvas.height / 2;
-      const scale = Math.min(canvas.width, canvas.height) * 0.015;
+      const scale = Math.min(canvas.width, canvas.height) * 0.022;
       const pulse = (Math.sin(time * 0.05) + 1) / 2;
       const pulseFactor = 1 + pulse * 0.1;
 
