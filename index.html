@@ -813,13 +813,31 @@
     function drawCentralHeart() {
       const centerX = canvas.width / 2;
       const centerY = canvas.height / 2;
-      const scale = Math.min(canvas.width, canvas.height) * 0.022;
+      const isMobile = canvas.width < 768;
+      // Larger scale on mobile for better visibility
+      const baseScale = isMobile ? 0.032 : 0.022;
+      const scale = Math.min(canvas.width, canvas.height) * baseScale;
       const pulse = (Math.sin(time * 0.05) + 1) / 2;
-      const pulseFactor = 1 + pulse * 0.1;
+      const pulseFactor = 1 + pulse * 0.15;
 
+      // Soft glow behind the heart (subtle, won't block text)
+      const glowRadius = scale * (isMobile ? 18 : 15);
+      const glowGradient = ctx.createRadialGradient(centerX, centerY, 0, centerX, centerY, glowRadius);
+      const glowOpacity = isMobile ? 0.12 : 0.08;
+      glowGradient.addColorStop(0, `rgba(255, 45, 85, ${glowOpacity * (0.7 + pulse * 0.3)})`);
+      glowGradient.addColorStop(0.5, `rgba(255, 45, 85, ${glowOpacity * 0.3})`);
+      glowGradient.addColorStop(1, 'rgba(255, 45, 85, 0)');
+      ctx.fillStyle = glowGradient;
+      ctx.beginPath();
+      ctx.arc(centerX, centerY, glowRadius, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Heart outline layers - more prominent lines
+      const baseOpacity = isMobile ? 0.35 : 0.25;
+      const lineWidthBase = isMobile ? 2.5 : 1.8;
       for (let layer = 0; layer < 5; layer++) {
         const layerScale = scale * pulseFactor * (1 - layer * 0.12);
-        const opacity = 0.15 - layer * 0.025;
+        const opacity = baseOpacity - layer * 0.05;
         ctx.beginPath();
         for (let t = 0; t <= Math.PI * 2; t += 0.05) {
           const x = centerX + heartX(t) * layerScale;
@@ -829,17 +847,9 @@
         }
         ctx.closePath();
         ctx.strokeStyle = `rgba(255, 45, 85, ${opacity})`;
-        ctx.lineWidth = 1;
+        ctx.lineWidth = lineWidthBase - layer * 0.3;
         ctx.stroke();
       }
-
-      const gradient = ctx.createRadialGradient(centerX, centerY, 0, centerX, centerY, scale * 15);
-      gradient.addColorStop(0, `rgba(255, 45, 85, ${0.1 * pulse})`);
-      gradient.addColorStop(1, 'rgba(255, 45, 85, 0)');
-      ctx.fillStyle = gradient;
-      ctx.beginPath();
-      ctx.arc(centerX, centerY, scale * 15, 0, Math.PI * 2);
-      ctx.fill();
     }
 
     function animate() {
