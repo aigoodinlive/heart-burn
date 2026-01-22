@@ -814,8 +814,8 @@
       const centerX = canvas.width / 2;
       const centerY = canvas.height / 2;
       const isMobile = canvas.width < 768;
-      // Larger scale on mobile for better visibility
-      const baseScale = isMobile ? 0.032 : 0.022;
+      // Scale reduced by 10%
+      const baseScale = isMobile ? 0.029 : 0.020;
       const scale = Math.min(canvas.width, canvas.height) * baseScale;
       const pulse = (Math.sin(time * 0.05) + 1) / 2;
       const pulseFactor = 1 + pulse * 0.15;
@@ -850,6 +850,16 @@
         ctx.lineWidth = lineWidthBase - layer * 0.3;
         ctx.stroke();
       }
+
+      // Inner heart pulsing fill (subtle red glow inside)
+      const innerGradient = ctx.createRadialGradient(centerX, centerY, 0, centerX, centerY, scale * 15);
+      const innerOpacity = isMobile ? 0.12 : 0.1;
+      innerGradient.addColorStop(0, `rgba(255, 45, 85, ${innerOpacity * pulse})`);
+      innerGradient.addColorStop(1, 'rgba(255, 45, 85, 0)');
+      ctx.fillStyle = innerGradient;
+      ctx.beginPath();
+      ctx.arc(centerX, centerY, scale * 15, 0, Math.PI * 2);
+      ctx.fill();
     }
 
     function animate() {
